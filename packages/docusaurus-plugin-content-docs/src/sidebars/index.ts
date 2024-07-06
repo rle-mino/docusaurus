@@ -40,9 +40,13 @@ export function resolveSidebarPathOption(
     : sidebarPathOption;
 }
 
-async function readCategoriesMetadata(contentPath: string) {
+async function readCategoriesMetadata(
+  contentPath: string,
+  exclude: PluginOptions['exclude'],
+) {
   const categoryFiles = await Globby('**/_category_.{json,yml,yaml}', {
     cwd: contentPath,
+    ignore: exclude,
   });
   const categoryToFile = _.groupBy(categoryFiles, path.dirname);
   return combinePromises(
@@ -113,6 +117,7 @@ export async function loadSidebars(
     validateSidebars(normalizedSidebars);
     const categoriesMetadata = await readCategoriesMetadata(
       options.version.contentPath,
+      options.exclude,
     );
     const processedSidebars = await processSidebars(
       normalizedSidebars,

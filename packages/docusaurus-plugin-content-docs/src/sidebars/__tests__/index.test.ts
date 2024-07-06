@@ -19,6 +19,7 @@ import type {
 describe('loadSidebars', () => {
   const fixtureDir = path.join(__dirname, '__fixtures__', 'sidebars');
   const params: SidebarProcessorParams = {
+    exclude: [],
     sidebarItemsGenerator: DefaultSidebarItemsGenerator,
     numberPrefixParser: (filename) => ({filename}),
     docs: [

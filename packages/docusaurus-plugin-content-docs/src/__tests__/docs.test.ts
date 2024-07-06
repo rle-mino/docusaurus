@@ -176,6 +176,7 @@ async function createTestUtils({
         defaultSidebarItemsGenerator({...args}),
       numberPrefixParser: options.numberPrefixParser,
       docs: rawDocs,
+      exclude: [],
       drafts: [],
       version: versionMetadata,
       sidebarOptions: {

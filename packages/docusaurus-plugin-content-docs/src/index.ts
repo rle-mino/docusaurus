@@ -215,6 +215,7 @@ export default async function pluginContentDocs(
         const sidebars = await loadSidebars(versionMetadata.sidebarFilePath, {
           sidebarItemsGenerator: options.sidebarItemsGenerator,
           numberPrefixParser: options.numberPrefixParser,
+          exclude: options.exclude,
           docs,
           drafts,
           version: versionMetadata,
